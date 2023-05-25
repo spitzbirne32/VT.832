@@ -44,6 +44,7 @@ path = ~/mainsail
 type = git_repo
 path = ~/crowsnest
 origin = https://github.com/mainsail-crew/crowsnest.git
+primary_branch = legacy/v3
 managed_services = crowsnest
 
 [update_manager sonar]
