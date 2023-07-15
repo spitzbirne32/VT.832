@@ -1,0 +1,5 @@
+saved_variables.cfg
+adxl_results/belts/*.csv
+adxl_results/vibrations/*.tar.gz
+octoeverywhere-system.cfg
+octoeverywhere.conf
