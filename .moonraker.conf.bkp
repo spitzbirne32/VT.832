@@ -106,3 +106,11 @@ system_dependencies = system-dependencies.json
 primary_branch = main
 managed_services = klipper
 
+[update_manager filter_monitor]
+type = git_repo
+path = ~/klipper-filter_monitor
+origin = https://github.com/blankhaus/klipper-filter_monitor.git
+managed_services = klipper moonraker
+primary_branch = main
+install_script = install.sh
+
