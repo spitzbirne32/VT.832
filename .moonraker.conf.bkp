@@ -28,6 +28,72 @@ trusted_clients =
 server = http://192.168.178.20:7912
 sync_rate = 5
 
+[mqtt]
+address = 192.168.178.21
+port = 1883
+username = voronmqtt
+password = voron123
+enable_moonraker_api = False
+
+[sensor tasmota_power]
+type = mqtt
+state_topic = tele/VT832TM/SENSOR
+state_response_template = 
+	{% set resp = payload|fromjson %}
+	{% set edata = resp["ENERGY"] %}
+	{set_result("energy", edata["Total"])}
+	{set_result("voltage", edata["Voltage"])}
+	{set_result("power", edata["Power"])}
+	{set_result("current", edata["Current"])}
+parameter_power = 
+	units=W
+parameter_voltage = 
+	units=V
+parameter_current = 
+	units=mA
+parameter_energy = 
+	units=kWh
+history_field_energy_consumption = 
+	parameter=energy
+	desc=Energy consumption
+	strategy=delta
+	units=kWh
+	init_tracker=true
+	precision=6
+	exclude_paused=false
+	report_total=true
+	report_maximum=true
+history_field_average_power = 
+	parameter=power
+	desc=Average power draw
+	strategy=average
+	units=W
+	report_total=false
+	report_maximum=true
+history_field_max_power = 
+	parameter=power
+	desc=Maximum power draw
+	strategy=maximum
+	units=W
+	init_tracker=true
+	report_total=false
+	report_maximum=false
+history_field_average_current = 
+	parameter=current
+	desc=Average current draw
+	strategy=average
+	units=A
+	report_total=false
+	report_maximum=true
+history_field_max_current = 
+	parameter=current
+	desc=Maximum current draw
+	strategy=maximum
+	units=A
+	init_tracker=true
+	report_total=false
+	report_maximum=false
+
 [history]
 
 [announcements]
