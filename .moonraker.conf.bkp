@@ -37,6 +37,7 @@ enable_moonraker_api = False
 
 [sensor tasmota_power]
 type = mqtt
+name = Nous A1T
 state_topic = tele/VT832TM/SENSOR
 state_response_template = 
 	{% set resp = payload|fromjson %}
